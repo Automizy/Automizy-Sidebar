@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="as.css">
+    <script src="vendor/requirejs/require.js"></script>
+    <script src="vendor/automizy-project-initializer/automizy-project-initializer.js"></script>
+    <script src="as.js"></script>
+    <script>
+
+        require([
+            "js/init/init"
+        ], function () {
+            $AS.init().ready(function () {
+
+                alert('All Done');
+
+            })
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

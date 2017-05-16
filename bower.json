@@ -1,0 +1,43 @@
+{
+  "name": "automizy-sidebar",
+  "description": "Sidebar created by Automizy",
+  "keywords":[
+    "automizy-sidebar",
+    "automizy"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "build",
+    "AUTHORS.txt",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "moduleType":[
+    "globals",
+    "amd"
+  ],
+  "main":[
+    "src/as.js",
+    "src/as.css"
+  ],
+  "authors":[
+    { "name": "Gyorgy Reti", "email": "gyorgy.reti@automizy.com" },
+    { "name": "Dominik Sagi", "email": "dominik.sagi@automizy.com" },
+    { "name": "Abel Enekes", "email": "abel.enekes@automizy.com" },
+    { "name": "Gabor Koncz", "email": "gabor.koncz@automizy.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/automizy/automizy-sidebar.git"
+  },
+  "dependencies": {
+    "jquery": "2.*",
+	"requirejs": "https://github.com/jrburke/requirejs.git#master",
+    "automizy-project-initializer": "*",
+	"fontawesome": "*",
+    "automizy-icon-set": "*",
+    "automizy-js": "*",
+    "automizy-js-api": "*"
+  }
+}
