@@ -14,7 +14,9 @@ define([], function () {
 
     window.AutomizySidebar = window.$AS = new AutomizyProject({
         variables: {
-            groups:[]
+            groups:[],
+            inners:[],
+            tabs:[]
         },
         plugins: [
             {

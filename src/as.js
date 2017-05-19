@@ -1,8 +1,9 @@
-define.amd = false;
+ define.amd = false;
 require([
     "js/init/init",
 
     "js/modules/group",
+    "js/modules/inner",
 
     "js/elements/layout"
 

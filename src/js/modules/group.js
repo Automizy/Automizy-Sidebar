@@ -5,10 +5,10 @@ define([
         var t = this;
         t.d = {
 
-            inner: false,
             sidebar: false,
 
             name:'',
+            title:'',
             $widget: $('<div class="automizy-sidebar-group"></div>'),
             $title: $('<div class="automizy-sidebar-group-title"></div>'),
             $content: $('<div class="automizy-sidebar-group-content"></div>')
@@ -36,7 +36,10 @@ define([
             }
         }
 
-        $AS.d.groups.push(t);
+        t.d.$title.appendTo(t.d.$widget);
+        t.d.$content.appendTo(t.d.$widget);
+
+        $AS.groups.push(t);
 
     };
 
@@ -74,15 +77,22 @@ define([
 
     p.sidebar = function () {
         var t = this;
-        return t.inner().sidebar();
+        return t.sidebar();
     };
-    p.inner = function (inner) {
+
+    p.title = function (title) {
         var t = this;
-        if (typeof inner !== 'undefined') {
-            t.d.inner = inner;
+        if (typeof title !== 'undefined') {
+            t.d.title = title;
+            t.d.$title.html(title);
+            if(t.d.$title.text().length <= 0){
+                t.d.$title.hide();
+            }else{
+                t.d.$title.show();
+            }
             return t;
         }
-        return t.d.inner;
+        return t.d.title;
     };
 
     p.content = function (content) {
