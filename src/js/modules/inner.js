@@ -113,7 +113,7 @@ define([
     p.addGroup = function (group) {
         var t = this;
         if(typeof group !== 'object'){
-            group = t.sidebar().getGroupByName(group);
+            group = t.sidebar().addGroup(group);
         }
         t.d.groups.push(group);
         return t;
@@ -124,7 +124,7 @@ define([
         if(typeof inner === 'undefined'){
             return new $AS.modules.Inner();
         }
-        if(group instanceof $AS.modules.Inner){
+        if(inner instanceof $AS.modules.Inner){
             return inner;
         }
         return new $AS.modules.Inner(inner || {});
