@@ -84,7 +84,7 @@ sidebar.inners([ /*list of inners*/ ]);
 sidebar.addInner(module|object);
 sidebar.getInnerByName('my-inner');
 sidebar.getAllInner();
-sidebar.groups([ /*list of inners*/ ]);
+sidebar.groups([ /*list of groups*/ ]);
 sidebar.addGroup(module|object);
 sidebar.getGroupByName('my-group');
 sidebar.getAllGroup();
