@@ -7,7 +7,8 @@ Az **Automizy-Sidebar** elhelyez a weboldalad szélére egy dobozt. Ebben a boxb
 ### Table of Contents
 1. [Installation](#Installation)
 2. [Usage](#Usage)
-4. [Options](#Options)
+3. [Options](#Options)
+4. [Example](#Example)
 
 
 <a name="Installation"></a>
@@ -177,7 +178,7 @@ var $widget = group.widget();
 ```
 
 
-## Full Mixed Example
+## Example
 
 ```javascript
 $AS.init().ready(function () {
@@ -226,15 +227,15 @@ $AS.init().ready(function () {
             {
                 name: 'layout',
                 title: 'Layout',
-                content: 'Layout content'
+                content: 'Text content'
             }, {
                 name: 'form-style',
                 title: 'Form Style',
-                content: 'Form Style content'
+                content: $('<b>jQuery element</b>')
             }, {
                 name: 'custom-css',
                 title: 'Custom CSS',
-                content: 'Custom CSS content'
+                content: $A.newButton().text('Automizy element')
             }
         ]
     })
