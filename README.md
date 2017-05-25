@@ -1,6 +1,6 @@
 # Automizy-Sidebar ($AS)
 
-Az **Automizy-Sidebar** elhelyez a weboldalad szélére egy dobozt. Ebben a boxban füleket, tartalmi blokkokat és csoportokat lehet készíteni. 
+The **Automizy-Sidebar** puts a vertical bar on the right side of your website (or element). In this box you can create tabs, content blocks and groups. 
 
 ![screenshot 1](https://raw.github.com/automizy/automizy-sidebar/master/screenshot1.png)
 
