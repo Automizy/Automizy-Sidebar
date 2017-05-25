@@ -1,15 +1,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="as.css">
-    <script src="vendor/requirejs/require.js"></script>
-    <script src="vendor/automizy-project-initializer/automizy-project-initializer.js"></script>
-    <script src="as.js"></script>
+    <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="vendor/automizy-project-initializer/automizy-project-initializer.js" type="text/javascript"></script>
+    <script src="automizy-sidebar.js" type="text/javascript"></script>
+    <link href="automizy-sidebar.css" rel="stylesheet" type="text/css">
     <script>
 
-        require([
-            "js/init/init"
-        ], function () {
+        $(function(){
             $AS.init().ready(function () {
 
                 window.sidebar = $AS.newSidebar({
@@ -50,11 +48,6 @@
                                 'custom-css'
                             ],
                             tab: 'form-actions'
-                        }, {
-                            name: 'tab-less',
-                            groups: [
-                                'tab-less-group'
-                            ]
                         }
                     ],
                     groups: [
@@ -69,20 +62,12 @@
                         }, {
                             name: 'custom-css',
                             title: 'Custom CSS',
-                            content: $A.newButton().text('Activate an other Inner').click(function(){
-                                window.sidebar.getInnerByName('tab-less').activate();
-                            })
-                        }, {
-                            name: 'tab-less-group',
-                            title: 'Tab-less Group',
-                            content: $A.newButton().text('Jump back').click(function(){
-                                window.sidebar.getInnerByName('fields').activate();
-                            })
+                            content: $A.newButton().text('Automizy element')
                         }
                     ]
                 })
 
-            })
+            });
         });
 
     </script>

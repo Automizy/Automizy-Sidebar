@@ -79,6 +79,7 @@ sidebar.tabs([ /*list of tabs*/ ]);
 sidebar.addTab(module|object);
 sidebar.getTabByName('my-tab');
 sidebar.getAllTab();
+sidebar.hideAllTab();
 sidebar.inners([ /*list of inners*/ ]);
 sidebar.addInner(module|object);
 sidebar.getInnerByName('my-inner');
@@ -108,13 +109,14 @@ var tab = $AS.newTab({
 
 ```javascript
 var tab  = $AS.newTab();
-tab.name('ma-tab');           //get|set name
+tab.name('ma-tab');             //get|set name
 tab.text('Tab text');           //get|set text
 tab.hide();
 tab.show();
+tab.showSiblings();
 tab.drawTo(sidebarModule);
 tab.inner(innerModule);         //get|set innerModule
-tab.sidebar(sidebarModule);                  //get|set sidebarModule
+tab.sidebar(sidebarModule);     //get|set sidebarModule
 tab.activate();
 tab.tabCategory('category1');   //get|set tab category
 var $widget = tab.widget();
@@ -138,14 +140,14 @@ var inner = $AS.newInner({
 
 ```javascript
 var inner  = $AS.newInner();
-inner.name('my-inner');           //get|set name
+inner.name('my-inner');                 //get|set name
 inner.hide();
 inner.show();
 inner.drawTo(sidebarModule);
-inner.tab(tabModule);         //get|set innerModule
+inner.tab(tabModule);                   //get|set innerModule
 inner.groups([ /*list of groups*/ ]);
 inner.addGroup(module|object);
-inner.sidebar(sidebarModule);                  //get|set sidebarModule
+inner.sidebar(sidebarModule);           //get|set sidebarModule
 var $widget = inner.widget();
 ```
 
@@ -167,13 +169,13 @@ var group = $AS.newGroup({
 
 ```javascript
 var group  = $AS.newGroup();
-group.name('my-group');           //get|set name
+group.name('my-group');             //get|set name
 group.hide();
 group.show();
 group.drawTo(sidebarModule);
-group.sidebar(sidebarModule);                  //get|set sidebarModule
-group.title('Group titpe');                  //get|set title
-group.content(content);                  //get|set content
+group.sidebar(sidebarModule);       //get|set sidebarModule
+group.title('Group titpe');         //get|set title
+group.content(content);             //get|set content
 var $widget = group.widget();
 ```
 
@@ -189,7 +191,7 @@ $AS.init().ready(function () {
         tabs: [
             {
                 name: 'fields',
-                text: 'Fields',
+                text: 'Fields'
             }, {
                 name: 'style',
                 text: 'Style'

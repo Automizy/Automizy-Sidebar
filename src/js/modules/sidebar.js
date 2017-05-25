@@ -10,13 +10,15 @@ define([
             groups:[],
 
             name:'',
-            $widget: $('<div class="automizy-sidebar">SW</div>'),
-            $tabs: $('<div class="automizy-sidebar-tabs">ST</div>'),
-            $inners: $('<div class="automizy-sidebar-inners">SI</div>')
+            $widget: $('<div class="automizy-sidebar"></div>'),
+            $tabsTable: $('<table cellpadding="0" cellspacing="0" border="0" class="automizy-sidebar-tabs-table"></table>'),
+            $tabs: $('<tr class="automizy-sidebar-tabs"></tr>'),
+            $inners: $('<div class="automizy-sidebar-inners"></div>')
 
         };
 
-        t.d.$tabs.appendTo(t.d.$widget);
+        t.d.$tabsTable.appendTo(t.d.$widget);
+        t.d.$tabs.appendTo(t.d.$tabsTable);
         t.d.$inners.appendTo(t.d.$widget);
 
         if (typeof obj !== 'undefined') {
@@ -143,6 +145,14 @@ define([
     };
     p.getAllTab = function(){
         return this.d.tabs;
+    };
+
+    p.hideAllTab = function(){
+        var t = this;
+        for(var i = 0; i < t.d.tabs.length; i++){
+            t.d.tabs[i].hide();
+        }
+        return false;
     };
 
 

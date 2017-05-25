@@ -10,7 +10,7 @@ define([
             tabCategory:'default',
 
             name:'',
-            $widget: $('<div class="automizy-sidebar-tab">TW</div>').click(function(){
+            $widget: $('<td class="automizy-sidebar-tab">TW</td>').click(function(){
                 t.activate();
             })
 
@@ -48,30 +48,37 @@ define([
         return this.d.$widget;
     };
     p.show = function () {
-        this.d.$widget.ashow();
-        return this
+        var t = this;
+        t.d.$widget.ashow();
+        return t
     };
+    p.showSiblings = function(){
+        var t = this;
+        var tabs = t.sidebar().getAllTab();
+        var activeTabCategory = t.tabCategory();
+        for(var i = 0; i < tabs.length; i++){
+            tabs[i].widget().removeClass('automizy-active');
+            if(tabs[i].tabCategory() === activeTabCategory){
+                tabs[i].show();
+            }else{
+                tabs[i].hide();
+            }
+        }
+        return t
+    };
+
     p.hide = function () {
         this.d.$widget.ahide();
         return this;
     };
-    p.activate = function () {
+    p.activate = function (reverse) {
         var t = this;
-        var tabs = t.sidebar().getAllTab();
-        var activeTabCategory = t.tabCategory();
-        var activeTabsCount = 0;
 
-        for(var i = 0; i < tabs.length; i++){
-            if(tabs[i].tabCategory() === activeTabCategory){
-                tabs[i].show();
-                activeTabsCount++;
-            }
+        t.showSiblings();
+        t.widget().addClass('automizy-active');
+        if(reverse !== false) {
+            t.inner().activate(false);
         }
-        if(activeTabsCount <= 1) {
-            t.hide();
-        }
-
-        t.inner().activate();
 
         return t;
     };

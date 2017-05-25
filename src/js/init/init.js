@@ -21,7 +21,7 @@ define([], function () {
         plugins: [
             {
                 name: 'fontawesome',
-                skipCondition: hasFont('fa', 'FontAwesome'),
+                skipCondition: function(){return hasFont('fa', 'FontAwesome')},
                 css: "vendor/fontawesome/css/font-awesome.min.css"
             },
             {

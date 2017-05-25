@@ -9,9 +9,9 @@ define([
 
             name:'',
             title:'',
-            $widget: $('<div class="automizy-sidebar-group">GW</div>'),
-            $title: $('<div class="automizy-sidebar-group-title">GT</div>'),
-            $content: $('<div class="automizy-sidebar-group-content">GC</div>')
+            $widget: $('<div class="automizy-sidebar-group"></div>'),
+            $title: $('<div class="automizy-sidebar-group-title"></div>'),
+            $content: $('<div class="automizy-sidebar-group-content"></div>')
 
         };
 

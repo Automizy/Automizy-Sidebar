@@ -10,7 +10,7 @@ define([
             groups: [],
 
             name:'',
-            $widget: $('<div class="automizy-sidebar-inner">IW</div>')
+            $widget: $('<div class="automizy-sidebar-inner"></div>')
 
         };
 
@@ -50,11 +50,18 @@ define([
         this.d.$widget.ahide();
         return this;
     };
-    p.activate = function () {
+    p.activate = function (reverse) {
         var t = this;
         var inners = t.sidebar().getAllInner();
         var activeGroups = t.groups();
 
+        if(t.tab() !== false) {
+            if (reverse !== false) {
+                t.tab().activate(false);
+            }
+        }else{
+            t.sidebar().hideAllTab();
+        }
         for(var i = 0; i < inners.length; i++){
             inners[i].hide();
         }

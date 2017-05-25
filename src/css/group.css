@@ -1,0 +1,15 @@
+.automizy-sidebar-group{
+    padding:36px 22px 36px 22px;
+    border-bottom:1px solid #fbfbfb;
+}
+.automizy-sidebar-group:last-child{
+    border-bottom:none;
+}
+.automizy-sidebar-group-title{
+    font-size:16px;
+    padding:0 0 22px 0;
+    font-weight: bold;
+}
+.automizy-sidebar-group-content{
+
+}
