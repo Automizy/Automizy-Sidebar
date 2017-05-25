@@ -10,18 +10,21 @@ define([
             tabCategory:'default',
 
             name:'',
-            $widget: $('<div class="automizy-sidebar-tab"></div>').click(function(){
+            $widget: $('<div class="automizy-sidebar-tab">TW</div>').click(function(){
                 t.activate();
             })
 
         };
 
         if (typeof obj !== 'undefined') {
+            if (typeof obj.sidebar !== 'undefined') {
+                t.sidebar(obj.sidebar);
+            }
             if (typeof obj.name !== 'undefined') {
                 t.name(obj.name);
             }
-            if (typeof obj.sidebar !== 'undefined') {
-                t.sidebar(obj.sidebar);
+            if (typeof obj.text !== 'undefined') {
+                t.text(obj.text);
             }
             if (typeof obj.inner !== 'undefined') {
                 t.inner(obj.inner);
@@ -80,23 +83,49 @@ define([
         }
         return t.d.name;
     };
+    p.text = function (text) {
+        var t = this;
+        if (typeof text !== 'undefined') {
+            t.d.text = text;
+            t.widget().text(t.d.text);
+            return t;
+        }
+        return t.d.text;
+    };
+    p.tabCategory = function (tabCategory) {
+        var t = this;
+        if (typeof tabCategory !== 'undefined') {
+            t.d.tabCategory = tabCategory;
+            return t;
+        }
+        return t.d.tabCategory;
+    };
     p.drawTo = function (target) {
         var t = this;
-        target = target || $('body');
-        if (typeof target.widget === 'function') {
-            target = target.widget();
+        target = target || 'body';
+        if (typeof target.tabBox === 'function') {
+            t.widget().appendTo(target.tabBox());
         }
-        t.widget().appendTo(target);
         return t;
     };
 
-    p.sidebar = function () {
+    p.sidebar = function (sidebar) {
         var t = this;
-        return t.sidebar();
+        if (typeof sidebar !== 'undefined') {
+            t.d.sidebar = sidebar;
+            return t;
+        }
+        return t.d.sidebar;
     };
     p.inner = function (inner, reverse) {
         var t = this;
-        if (typeof inner === 'undefined') {
+        if (typeof inner !== 'undefined') {
+            if(typeof inner !== 'object'){
+                inner = t.sidebar().getInnerByName(inner);
+            }
+            if(!(inner instanceof $AS.modules.Inner)){
+                inner = $AS.newInner(inner);
+            }
             t.d.inner = inner;
             if(reverse !== false) {
                 t.d.inner.tab(t, false);
@@ -110,7 +139,7 @@ define([
         if(typeof tab === 'undefined'){
             return new $AS.modules.Tab();
         }
-        if(group instanceof $AS.modules.Tab){
+        if(tab instanceof $AS.modules.Tab){
             return tab;
         }
         return new $AS.modules.Tab(tab || {});

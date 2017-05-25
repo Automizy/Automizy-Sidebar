@@ -10,16 +10,16 @@ define([
             groups: [],
 
             name:'',
-            $widget: $('<div class="automizy-sidebar-inner"></div>')
+            $widget: $('<div class="automizy-sidebar-inner">IW</div>')
 
         };
 
         if (typeof obj !== 'undefined') {
-            if (typeof obj.name !== 'undefined') {
-                t.name(obj.name);
-            }
             if (typeof obj.sidebar !== 'undefined') {
                 t.sidebar(obj.sidebar);
+            }
+            if (typeof obj.name !== 'undefined') {
+                t.name(obj.name);
             }
             if (typeof obj.tab !== 'undefined') {
                 t.tab(obj.tab);
@@ -84,13 +84,23 @@ define([
         return t;
     };
 
-    p.sidebar = function () {
+    p.sidebar = function (sidebar) {
         var t = this;
-        return t.sidebar();
+        if (typeof sidebar !== 'undefined') {
+            t.d.sidebar = sidebar;
+            return t;
+        }
+        return t.d.sidebar;
     };
     p.tab = function (tab, reverse) {
         var t = this;
-        if (typeof tab === 'undefined') {
+        if (typeof tab !== 'undefined') {
+            if(typeof tab !== 'object'){
+                tab = t.sidebar().getTabByName(tab);
+            }
+            if(!(tab instanceof $AS.modules.Tab)){
+                tab = $AS.newTab(tab);
+            }
             t.d.tab = tab;
             if(reverse !== false) {
                 t.d.tab.inner(t, false);
@@ -112,10 +122,17 @@ define([
     };
     p.addGroup = function (group) {
         var t = this;
-        if(typeof group !== 'object'){
-            group = t.sidebar().addGroup(group);
+
+        if (typeof group !== 'undefined') {
+            if(typeof group !== 'object'){
+                group = t.sidebar().getGroupByName(group);
+            }
+            if(!(group instanceof $AS.modules.Group)){
+                group = t.sidebar().addGroup(group);
+            }
+            t.d.groups.push(group);
         }
-        t.d.groups.push(group);
+
         return t;
     };
 

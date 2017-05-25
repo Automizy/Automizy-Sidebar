@@ -50,13 +50,14 @@ Now, init the module and create a new sidebar:
 <a name="Options"></a>
 ## Options
 
-### New sidebar
+### New Sidebar
 
 #### Init parameters
 
 ```javascript
-$AS.newSidebar({
-    name:'Sidebar name',
+var sidebar = $AS.newSidebar({
+    name:'my-sidebar',
+    target:'body',
     tabs:[ /*list of tabs*/ ],
     inners:[ /*list of inners*/ ],
     groups:[ /*list of groups*/ ]
@@ -67,13 +68,112 @@ $AS.newSidebar({
 
 ```javascript
 var sidebar = $AS.newSidebar();
-sidebar.name('Sidebar name');
+sidebar.name('my-sidebar');
+sidebar.drawTo('body');
+sidebar.hide();
+sidebar.show();
+sidebar.tabBox();
+sidebar.innerBox();
 sidebar.tabs([ /*list of tabs*/ ]);
 sidebar.addTab(module|object);
+sidebar.getTabByName('my-tab');
+sidebar.getAllTab();
 sidebar.inners([ /*list of inners*/ ]);
 sidebar.addInner(module|object);
+sidebar.getInnerByName('my-inner');
+sidebar.getAllInner();
 sidebar.groups([ /*list of inners*/ ]);
 sidebar.addGroup(module|object);
+sidebar.getGroupByName('my-group');
+sidebar.getAllGroup();
+var $widget = sidebar.widget();
+```
+
+### New Tab
+
+#### Init parameters
+
+```javascript
+var tab = $AS.newTab({
+    name:'my-tab',
+    text:'Tab text',
+    target:sidebarModule,
+    inner:innerModule,
+    sidebar:sidebarModule
+})
+```
+
+#### Dynamic functions
+
+```javascript
+var tab  = $AS.newTab();
+tab.name('ma-tab');           //get|set name
+tab.text('Tab text');           //get|set text
+tab.hide();
+tab.show();
+tab.drawTo(sidebarModule);
+tab.inner(innerModule);         //get|set innerModule
+tab.sidebar(sidebarModule);                  //get|set sidebarModule
+tab.activate();
+tab.tabCategory('category1');   //get|set tab category
+var $widget = tab.widget();
+```
+
+### New Inner
+
+#### Init parameters
+
+```javascript
+var inner = $AS.newInner({
+    name:'my-inner',
+    target:sidebarModule,
+    tab:tabModule,
+    sidebar:sidebarModule,
+    groups:[ /*list of groups*/ ]
+})
+```
+
+#### Dynamic functions
+
+```javascript
+var inner  = $AS.newInner();
+inner.name('my-inner');           //get|set name
+inner.hide();
+inner.show();
+inner.drawTo(sidebarModule);
+inner.tab(tabModule);         //get|set innerModule
+inner.groups([ /*list of groups*/ ]);
+inner.addGroup(module|object);
+inner.sidebar(sidebarModule);                  //get|set sidebarModule
+var $widget = inner.widget();
+```
+
+
+### New Group
+
+#### Init parameters
+
+```javascript
+var group = $AS.newGroup({
+    name:'my-group',
+    title:'Group title',
+    content:content,
+    sidebar:sidebarModule
+})
+```
+
+#### Dynamic functions
+
+```javascript
+var group  = $AS.newGroup();
+group.name('my-group');           //get|set name
+group.hide();
+group.show();
+group.drawTo(sidebarModule);
+group.sidebar(sidebarModule);                  //get|set sidebarModule
+group.title('Group titpe');                  //get|set title
+group.content(content);                  //get|set content
+var $widget = group.widget();
 ```
 
 

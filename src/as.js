@@ -4,6 +4,8 @@ require([
 
     "js/modules/group",
     "js/modules/inner",
+    "js/modules/tab",
+    "js/modules/sidebar",
 
     "js/elements/layout"
 
