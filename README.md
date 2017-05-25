@@ -177,6 +177,73 @@ var $widget = group.widget();
 ```
 
 
+## Full Mixed Example
+
+```javascript
+$AS.init().ready(function () {
+    
+    window.sidebar = $AS.newSidebar({
+        name: 'Sidebar name',
+        target: 'body',
+        tabs: [
+            {
+                name: 'fields',
+                text: 'Fields',
+            }, {
+                name: 'style',
+                text: 'Style'
+            }, {
+                name: 'form-actions',
+                text: 'Form Actions'
+            }
+        ],
+        inners: [
+            {
+                name: 'fields',
+                tab: 'fields',
+                groups: [
+                    'layout',
+                    'form-style',
+                    'custom-css'
+                ]
+            }, {
+                name: 'style',
+                groups: [
+                    'form-style',
+                    'custom-css'
+                ],
+                tab: 'style'
+            }, {
+                name: 'form-actions',
+                groups: [
+                    'layout',
+                    'custom-css'
+                ],
+                tab: 'form-actions'
+            }
+        ],
+        groups: [
+            {
+                name: 'layout',
+                title: 'Layout',
+                content: 'Layout content'
+            }, {
+                name: 'form-style',
+                title: 'Form Style',
+                content: 'Form Style content'
+            }, {
+                name: 'custom-css',
+                title: 'Custom CSS',
+                content: 'Custom CSS content'
+            }
+        ]
+    })
+    
+})
+```
+
+
+
 <a name="License"></a>
 ## License
 
