@@ -229,11 +229,18 @@
         this.d.$widget.ahide();
         return this;
     };
-    p.activate = function () {
+    p.activate = function (reverse) {
         var t = this;
         var inners = t.sidebar().getAllInner();
         var activeGroups = t.groups();
 
+        if(t.tab() !== false) {
+            if (reverse !== false) {
+                t.tab().activate(false);
+            }
+        }else{
+            t.sidebar().hideAllTab();
+        }
         for(var i = 0; i < inners.length; i++){
             inners[i].hide();
         }
@@ -376,32 +383,37 @@
         return this.d.$widget;
     };
     p.show = function () {
-        this.d.$widget.ashow();
-        return this
+        var t = this;
+        t.d.$widget.ashow();
+        return t
     };
-    p.hide = function () {
-        this.d.$widget.ahide();
-        return this;
-    };
-    p.activate = function () {
+    p.showSiblings = function(){
         var t = this;
         var tabs = t.sidebar().getAllTab();
         var activeTabCategory = t.tabCategory();
-        var activeTabsCount = 0;
-
         for(var i = 0; i < tabs.length; i++){
             tabs[i].widget().removeClass('automizy-active');
             if(tabs[i].tabCategory() === activeTabCategory){
                 tabs[i].show();
-                activeTabsCount++;
+            }else{
+                tabs[i].hide();
             }
         }
-        if(activeTabsCount <= 1) {
-            t.hide();
-        }
+        return t
+    };
 
+    p.hide = function () {
+        this.d.$widget.ahide();
+        return this;
+    };
+    p.activate = function (reverse) {
+        var t = this;
+
+        t.showSiblings();
         t.widget().addClass('automizy-active');
-        t.inner().activate();
+        if(reverse !== false) {
+            t.inner().activate(false);
+        }
 
         return t;
     };
@@ -622,6 +634,14 @@
     };
     p.getAllTab = function(){
         return this.d.tabs;
+    };
+
+    p.hideAllTab = function(){
+        var t = this;
+        for(var i = 0; i < t.d.tabs.length; i++){
+            t.d.tabs[i].hide();
+        }
+        return false;
     };
 
 
