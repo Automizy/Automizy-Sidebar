@@ -18,13 +18,24 @@
                     tabs: [
                         {
                             name: 'fields',
-                            text: 'Fields'
+                            text: 'Fields',
+                            tabCategory:'category-1'
                         }, {
                             name: 'style',
-                            text: 'Style'
+                            text: 'Style',
+                            tabCategory:'category-1'
                         }, {
                             name: 'form-actions',
-                            text: 'Form Actions'
+                            text: 'Form Actions',
+                            tabCategory:'category-1'
+                        }, {
+                            name: 'tab-test-1',
+                            text: 'Test 1',
+                            tabCategory:'category-2'
+                        }, {
+                            name: 'tab-test-2',
+                            text: 'Test 2',
+                            tabCategory:'category-2'
                         }
                     ],
                     inners: [
@@ -55,6 +66,18 @@
                             groups: [
                                 'tab-less-group'
                             ]
+                        }, {
+                            name: 'tab-test-1',
+                            groups: [
+                                'tab-test-group'
+                            ],
+                            tab: 'tab-test-1'
+                        }, {
+                            name: 'tab-test-2',
+                            groups: [
+                                'tab-test-group'
+                            ],
+                            tab: 'tab-test-2'
                         }
                     ],
                     groups: [
@@ -69,18 +92,34 @@
                         }, {
                             name: 'custom-css',
                             title: 'Custom CSS',
-                            content: $A.newButton().text('Activate an other Inner').click(function(){
-                                window.sidebar.getInnerByName('tab-less').activate();
-                            })
+                            content: $A.newForm()
+                                .addButton(
+                                    $A.newButton().text('Activate a tab-less Inner').click(function(){
+                                        window.sidebar.getInnerByName('tab-less').activate();
+                                    })
+                                )
+                                .addButton(
+                                    $A.newButton().text('Activate a 2 tab Inner').click(function(){
+                                        window.sidebar.getInnerByName('tab-test-1').activate();
+                                    })
+                                )
                         }, {
                             name: 'tab-less-group',
                             title: 'Tab-less Group',
                             content: $A.newButton().text('Jump back').click(function(){
                                 window.sidebar.getInnerByName('fields').activate();
                             })
+                        }, {
+                            name: 'tab-test-group',
+                            title: 'Tab test Group',
+                            content: $A.newButton().text('Jump back').click(function(){
+                                window.sidebar.getInnerByName('fields').activate();
+                            })
                         }
                     ]
-                })
+                });
+
+                window.sidebar.getInnerByName('fields').activate();
 
             })
         });
