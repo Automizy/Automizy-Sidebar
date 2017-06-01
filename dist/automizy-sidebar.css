@@ -14,9 +14,12 @@
 }
 .automizy-sidebar-tabs{
 }
-.automizy-sidebar-inners{
+.automizy-sidebar .automizy-sidebar-inners{
     overflow-y:auto;
     overflow-x:hidden;
+    height:100%;
+}
+.automizy-sidebar.automizy-sidebar-has-tabs .automizy-sidebar-inners{
     height:calc(100% - 50px);
 }
 .automizy-sidebar-tab{

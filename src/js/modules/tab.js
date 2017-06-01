@@ -50,6 +50,7 @@ define([
     p.show = function () {
         var t = this;
         t.d.$widget.ashow();
+        t.sidebar().widget().addClass('automizy-sidebar-has-tabs');
         return t
     };
     p.showSiblings = function(){

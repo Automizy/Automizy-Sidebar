@@ -152,6 +152,7 @@ define([
         for(var i = 0; i < t.d.tabs.length; i++){
             t.d.tabs[i].hide();
         }
+        t.widget().removeClass('automizy-sidebar-has-tabs');
         return false;
     };
 
