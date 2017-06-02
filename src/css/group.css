@@ -10,6 +10,9 @@
     padding:0 0 22px 0;
     font-weight: bold;
 }
+.automizy-sidebar-group-title:empty{
+    display:none;
+}
 .automizy-sidebar-group-content{
 
 }
