@@ -132,6 +132,9 @@ var inner = $AS.newInner({
     target:sidebarModule,
     tab:tabModule,
     sidebar:sidebarModule,
+    activate:function(){
+        console.log(this.name());   //my-inner
+    },
     groups:[ /*list of groups*/ ]
 })
 ```
@@ -148,6 +151,7 @@ inner.tab(tabModule);                   //get|set innerModule
 inner.groups([ /*list of groups*/ ]);
 inner.addGroup(module|object);
 inner.sidebar(sidebarModule);           //get|set sidebarModule
+inner.activate(func);                   //activate the innerModule OR set a function that call after activate the innerModule
 var $widget = inner.widget();
 ```
 

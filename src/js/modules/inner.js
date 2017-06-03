@@ -9,6 +9,8 @@ define([
             tab:false,
             groups: [],
 
+            activateFunction:function(){},
+
             name:'',
             $widget: $('<div class="automizy-sidebar-inner"></div>')
 
@@ -26,6 +28,9 @@ define([
             }
             if (typeof obj.groups !== 'undefined') {
                 t.groups(obj.groups);
+            }
+            if (typeof obj.activate === 'function') {
+                t.activate(obj.activate);
             }
             if (typeof obj.target !== 'undefined') {
                 t.drawTo(obj.target);
@@ -50,13 +55,19 @@ define([
         this.d.$widget.ahide();
         return this;
     };
-    p.activate = function (reverse) {
+    p.activate = function (reverseOrFunction) {
         var t = this;
+
+        if(typeof reverseOrFunction === 'function'){
+            t.d.activateFunction = reverseOrFunction;
+            return t;
+        }
+
         var inners = t.sidebar().getAllInner();
         var activeGroups = t.groups();
 
         if(t.tab() !== false) {
-            if (reverse !== false) {
+            if (reverseOrFunction !== false) {
                 t.tab().activate(false);
             }
         }else{
@@ -70,6 +81,8 @@ define([
         for(var i = 0; i < activeGroups.length; i++){
             activeGroups[i].drawTo(t);
         }
+
+        t.d.activateFunction.apply(t, []);
 
         return t;
     };
