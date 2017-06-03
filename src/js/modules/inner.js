@@ -10,6 +10,8 @@ define([
             groups: [],
 
             activateFunction:function(){},
+            inactivateFunction:function(){},
+            activated:false,
 
             name:'',
             $widget: $('<div class="automizy-sidebar-inner"></div>')
@@ -31,6 +33,9 @@ define([
             }
             if (typeof obj.activate === 'function') {
                 t.activate(obj.activate);
+            }
+            if (typeof obj.inactivate === 'function') {
+                t.inactivate(obj.inactivate);
             }
             if (typeof obj.target !== 'undefined') {
                 t.drawTo(obj.target);
@@ -62,6 +67,10 @@ define([
             t.d.activateFunction = reverseOrFunction;
             return t;
         }
+        if(t.d.activated === true){
+            return t;
+        }
+        t.d.activated = true;
 
         var inners = t.sidebar().getAllInner();
         var activeGroups = t.groups();
@@ -74,7 +83,10 @@ define([
             t.sidebar().hideAllTab();
         }
         for(var i = 0; i < inners.length; i++){
-            inners[i].hide();
+            if(inners[i] === t){
+                continue;
+            }
+            inners[i].inactivate();
         }
         t.show();
 
@@ -83,6 +95,23 @@ define([
         }
 
         t.d.activateFunction.apply(t, []);
+
+        return t;
+    };
+    p.inactivate = function (inactivateFunction) {
+        var t = this;
+
+        if(typeof inactivateFunction === 'function'){
+            t.d.inactivateFunction = inactivateFunction;
+            return t;
+        }
+        if(t.d.activated === false){
+            return t;
+        }
+        t.d.activated = false;
+
+        t.hide();
+        t.d.inactivateFunction.apply(t, []);
 
         return t;
     };
