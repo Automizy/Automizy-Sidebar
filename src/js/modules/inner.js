@@ -72,6 +72,8 @@ define([
         }
         t.d.activated = true;
 
+        t.sidebar().activeInner(t);
+
         var inners = t.sidebar().getAllInner();
         var activeGroups = t.groups();
 

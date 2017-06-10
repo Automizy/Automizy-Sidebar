@@ -80,6 +80,7 @@ define([
         if(reverse !== false) {
             t.inner().activate(false);
         }
+        t.sidebar().activeTab(t);
 
         return t;
     };

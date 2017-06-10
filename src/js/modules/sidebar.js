@@ -9,6 +9,9 @@ define([
             inners:[],
             groups:[],
 
+            activeInner:false,
+            activeTab:false,
+
             name:'',
             $widget: $('<div class="automizy-sidebar"></div>'),
             $tabsTable: $('<table cellpadding="0" cellspacing="0" border="0" class="automizy-sidebar-tabs-table"></table>'),
@@ -68,6 +71,22 @@ define([
             return t;
         }
         return t.d.name;
+    };
+    p.activeInner = function (activeInner) {
+        var t = this;
+        if (typeof activeInner !== 'undefined') {
+            t.d.activeInner = activeInner;
+            return t;
+        }
+        return t.d.activeInner;
+    };
+    p.activeTab = function (activeTab) {
+        var t = this;
+        if (typeof activeTab !== 'undefined') {
+            t.d.activeTab = activeTab;
+            return t;
+        }
+        return t.d.activeTab;
     };
     p.drawTo = function (target) {
         var t = this;

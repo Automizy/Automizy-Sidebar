@@ -101,7 +101,8 @@ var tab = $AS.newTab({
     text:'Tab text',
     target:sidebarModule,
     inner:innerModule,
-    sidebar:sidebarModule
+    sidebar:sidebarModule,
+    tabCategory:'category1'
 })
 ```
 
